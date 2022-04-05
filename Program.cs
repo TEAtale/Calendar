@@ -25,27 +25,25 @@ namespace DailyDay
 
         static void PrintMonth (int count)
         {
-            for (int i = 0; i < count+1; i = i + 7)
+            for (int i = 1; i < count+1; i++)
             {
-                for (int j = 1; j <= 7; j++)
+                if (i < 10)
                 {
-                    if ((j + i) < count+1)
-                    {
-                        if ((j+i) < 10)
-                        {
-                            Console.Write(j + i);
-                            Console.Write("  ");
-                        }
-                        else
-                        {
-                            Console.Write(j + i);
-                            Console.Write(" ");
-                        }
-                        
-                    }
+                    Console.Write(i);
+                    Console.Write("  ");
                 }
-                Console.WriteLine();
+                else
+                {
+                    Console.Write(i);
+                    Console.Write(" ");
+                }
+
+                if ((i % 7) == 0)
+                {
+                    Console.WriteLine();
+                }
             }
+            
         }
         static string Hello(string s, int timeOfDay)
         {
