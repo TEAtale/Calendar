@@ -4,6 +4,7 @@ namespace DailyDay
 {
     internal class Program
     {
+        
         static void Main(string[] args)
         {
             int timeOfDay = DateTime.Now.Hour;
@@ -18,8 +19,19 @@ namespace DailyDay
             
             PrintMonth(30);
 
-            
-            
+            string[][] tasks = new string[7][];
+            for (int i = 0; i < tasks.Length; i++)
+            {
+                tasks[i] = new string[5];
+                Console.WriteLine("День " + (i+1) + ":");
+                for (int j = 0; j < tasks[i].Length; j++)
+                {
+                    tasks[i][j] = "Задание " + (j + 1);
+                    Console.WriteLine(tasks[i][j]);
+                }
+                Console.WriteLine();
+            }
+
 
         }
 
@@ -43,7 +55,7 @@ namespace DailyDay
                     Console.WriteLine();
                 }
             }
-            
+            Console.WriteLine();
         }
         static string Hello(string s, int timeOfDay)
         {
