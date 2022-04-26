@@ -26,8 +26,10 @@ namespace DailyDay
                 Console.WriteLine("День " + (i+1) + ":");
                 for (int j = 0; j < tasks[i].Length; j++)
                 {
-                    tasks[i][j] = "Задание " + (j + 1);
+                    
+                    tasks[i][j] = "Задание " + (j + 1) + ": ";
                     Console.WriteLine(tasks[i][j]);
+                    
                 }
                 Console.WriteLine();
             }
