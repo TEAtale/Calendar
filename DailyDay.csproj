@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Program.cs~RF38fc6e5d.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="repos\My Calendar">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

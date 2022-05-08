@@ -10,19 +10,22 @@ namespace DailyDay
     {
         private string name;
         private DateTime dateOfBirth;
-        int timeOfDay = DateTime.Now.Hour;
-        private int age;
+        //int timeOfDay = DateTime.Now.Hour;
 
-        public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
-        public int Age { get { 
-                if (DateTime.Now.Month < dateOfBirth.Month)
-                age = DateTime.Now.Year - dateOfBirth.Year - 1;
-                else if(DateTime.Now.Month == dateOfBirth.Month && DateTime.Now.Day < dateOfBirth.Day)
-                age = DateTime.Now.Year - dateOfBirth.Year - 1;
-            else
-                age = DateTime.Now.Year - dateOfBirth.Year;
+        public int Age { get {
+                int age;
+                if (DateTime.Now.Month < DateOfBirth.Month)
+                {
+                    age = DateTime.Now.Year - DateOfBirth.Year - 1;
+                }
+                else if(DateTime.Now.Month == DateOfBirth.Month && DateTime.Now.Day < DateOfBirth.Day)
+                    age = DateTime.Now.Year - DateOfBirth.Year - 1;
+                else
+                    age = DateTime.Now.Year - DateOfBirth.Year;
                 return age; }
         }
+        
+        public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
 
         public User(string userName, DateTime userBirthDate)
         {
@@ -35,29 +38,52 @@ namespace DailyDay
             this.name = name;
         }
 
-        public void Hello()
+        public DayTime timeOfDay()
         {
-
-            if (timeOfDay >= 5 && timeOfDay < 12)
+            int timeOfDay = DateTime.Now.Hour;
+            if (timeOfDay >= 5 && timeOfDay< 12)
             {
-                Console.WriteLine("Доброе утро, " + name);
-
+                return DayTime.Morning;
             }
             if (timeOfDay >= 12 && timeOfDay < 18)
             {
-                Console.WriteLine("Доброго денечка, " + name);
+                return DayTime.Afternoon;
 
             }
             if (timeOfDay >= 18 && timeOfDay < 24)
             {
-                Console.WriteLine("Добрый вечер, " + name + "! \nКак день прошел?");
+                return DayTime.Evening;
 
             }
-            if (timeOfDay == 24 || timeOfDay < 5)
+            return DayTime.Night;
+        }
+
+        public void Hello()
+        {
+            switch (timeOfDay())
             {
-                Console.WriteLine("Спи уже!!!");
+                case DayTime.Morning:
+                    Console.WriteLine("Доброе утро, " + name);
+                    break;
+                case DayTime.Afternoon:
+                    Console.WriteLine("Доброго денечка, " + name);
+                    break;
+                case DayTime.Evening:
+                    Console.WriteLine("Добрый вечер, " + name + "! \nКак день прошел?");
+                    break;
+                case DayTime.Night:
+                    Console.WriteLine("Спи уже!!!");
+                    break;
             }
 
         }
+    }
+
+    enum DayTime
+    {
+        Morning,
+        Afternoon,
+        Evening,
+        Night
     }
 }
